@@ -1,3 +1,5 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import { ActionMap } from 'reducers/util'
 import { Player } from 'models/player'
 
@@ -10,7 +12,7 @@ export enum PlayerActionTypes {
 
 type PlayerPayload = {
   [PlayerActionTypes.Reset]: null
-  [PlayerActionTypes.Add]: Player
+  [PlayerActionTypes.Add]: string
   [PlayerActionTypes.Delete]: number
   [PlayerActionTypes.Edit]: {
     index: number
@@ -25,7 +27,7 @@ export const PlayerReducer = (state: Player[], action: PlayerActions) => {
     case PlayerActionTypes.Reset:
       return []
     case PlayerActionTypes.Add:
-      return [...state, action.payload]
+      return [...state, { name: action.payload, uuid: uuidV4() }]
     case PlayerActionTypes.Delete:
       return state.slice(0, action.payload).concat(state.slice(action.payload + 1, state.length))
     case PlayerActionTypes.Edit:

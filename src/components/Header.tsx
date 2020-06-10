@@ -6,7 +6,7 @@ import { colors } from 'util/colors'
 
 const HeaderDiv = styled.div`
     display: flex;
-    flex: 1 0;
+    flex: 0 0 2rem;
     background-color: ${colors.primary};
     color: ${colors.white};
     box-shadow: 0rem 0.25rem 0.625rem 0.0625rem rgba(0,0,0,0.4);

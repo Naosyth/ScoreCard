@@ -12,7 +12,11 @@ export const PlayerContext = createContext<{
 })
 
 export const PlayerProvider: FC = ({ children }) => {
-  const [state, dispatch] = useReducer(PlayerReducer, [])
+  const [state, dispatch] = useReducer(PlayerReducer, [
+    { name: 'bob', uuid: 'uuid1' },
+    { name: 'jim', uuid: 'uuid2' },
+    { name: 'tom', uuid: 'uuid3' },
+  ])
   return (
     <PlayerContext.Provider value={{ state, dispatch }}>
       {children}

@@ -1,6 +1,4 @@
 import React, { FC, useContext, useState } from 'react'
-import styled from '@emotion/styled/macro'
-import { v4 as uuidV4 } from 'uuid'
 
 import { ConfirmationModal } from 'components/ConfirmationModal'
 import { PlayerContext } from 'components/PlayerContext'
@@ -18,11 +16,10 @@ export const AddPlayerModal: FC<AddPlayerModalProps> = ({ isVisible, toggle }) =
   const addPlayer = () => {
     dispatch({
       type: PlayerActionTypes.Add,
-      payload: {
-        name: name,
-        uuid: uuidV4(),
-      }
+      payload: name
     })
+    toggle()
+    setName('')
   }
 
   return (
